@@ -1,0 +1,14 @@
+.main{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    row-gap: 10px;
+}
+
+.main>div{
+    /* border: 1px solid black; */
+}
+
+.actions>button{
+    margin-right: 10px;
+}
