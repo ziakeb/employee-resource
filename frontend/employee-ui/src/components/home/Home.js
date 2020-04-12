@@ -32,7 +32,6 @@ class Home extends Component {
   };
 
   onAddClick = async (event) => {
-    // event.preventDefault();
     let quote,
       joke = "";
     let newEmployee = null;
@@ -60,8 +59,6 @@ class Home extends Component {
       favQuote: quote,
     };
     console.log(newEmployee);
-
-    // TODO: make a POST request to REST API to add new employee
     axios
       .post(axios.defaults.baseURL, newEmployee)
       .then((data) => console.log(data))
@@ -74,7 +71,6 @@ class Home extends Component {
   };
 
   onListEmployeeClick() {
-  
     this.setState({
       showList: true,
       showAdd: false,
@@ -84,23 +80,11 @@ class Home extends Component {
     this.setState({ showList: false, showAdd: true });
   }
 
-  // //  fetching employee data once the component is mounted
-  // componentDidMount() {
-  //   console.log("componentDidMount invoked.........");
-  //   // axios.get(axios.defaults.baseURL)
-  //   // .then(response => this.setState({employeeList: response.data}))
-  //   // .catch(err => console.log(err))
-  //   // .finally(console.log('axios finished!'));
-  // }
-
   componentDidUpdate() {
-    // console.log('componentDidUpdate invoked.........');
-
     axios
       .get(axios.defaults.baseURL)
       .then((response) => this.setState({ employeeList: response.data }))
       .catch((err) => console.log(err));
-    // console.log(this.state);
   }
 
   render() {
