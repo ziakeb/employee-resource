@@ -37,4 +37,11 @@ app.listen(port, function() {
     console.log(`Server is listening on port ${port}`);
 });
 
+// Handle unhandled promise rejections 
+process.on('unhandledRejection', (err, promise) => {
+    console.log(`Error: ${err.message}`);
+    // Close server & exit process
+    server.close();
+})
+
 module.exports = app;
