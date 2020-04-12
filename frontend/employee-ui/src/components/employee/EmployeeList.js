@@ -1,14 +1,20 @@
 import React from 'react';
+import Employee from "./Employee";
+import './employee.css';
 
-const EmployeeList = () => {
-    return(
-        <div>
-            First Name: 
-            Last Name:
-            Hire Date: 
-            Role:
-            favJoke: 
-            favQuote: 
+
+
+const EmployeeList = (props) => {
+    let employeeList = '';
+    if(props.employeeList.length > 0){
+        employeeList = props.employeeList.map(emp => <Employee key={emp._id} employee={emp}/> )
+    }
+    
+    return (
+        <div className="emoloyee-list">
+
+            {employeeList}
+
         </div>
     )
 }
