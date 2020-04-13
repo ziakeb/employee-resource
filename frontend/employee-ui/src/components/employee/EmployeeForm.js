@@ -3,7 +3,9 @@ import React, { Component } from "react";
 class EmployeeForm extends Component {
   render() {
     return (
-      <div className="add-employee-from">
+      <form className="add-employee-from"
+      onSubmit={(event) => this.props.onSubmitHandler(event)}
+      >
         <h1>Add Employee</h1>
         <div>
           <label>First Name: </label>
@@ -58,16 +60,14 @@ class EmployeeForm extends Component {
           </select>
         </div>
         <div>
-          <button
+          <input
             type="submit"
+            value="Add"
             placeholder="hire date"
-            className="btn btn-primary"
-            onClick={(event) => this.props.onAddClick(event)}
-          >
-            Add
-          </button>
+            className="btn btn-primary" />
+          
         </div>
-      </div>
+      </form>
     );
   }
 }

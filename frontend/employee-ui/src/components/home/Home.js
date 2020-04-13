@@ -32,7 +32,8 @@ class Home extends Component {
   };
 
   // Handles onClick event of Add button
-  onAddClick = async () => {
+  onSubmitHandler = async (event) => {
+    event.preventDefault();
     let quote,
       joke = "";
     let newEmployee = null;
@@ -72,7 +73,12 @@ class Home extends Component {
     // if successfuly added alert success message and set both shoList and showAdd to false
     alert("Employee successfuly added");
     console.log("newEmployee....", newEmployee);
-    this.setState({ showList: false, showAdd: false });
+    this.setState({ 
+      showList: false, 
+      showAdd: false,
+      firstName: '',
+      lastName: ''
+     });
   };
 
   // Handles onClick event of ListEmployee button
@@ -110,7 +116,7 @@ class Home extends Component {
           hireDate={this.state.hireDate}
           role={this.state.role}
           onInputChange={this.onInputChange}
-          onAddClick={this.onAddClick}
+          onSubmitHandler={this.onSubmitHandler}
         />
       );
     }
