@@ -8,10 +8,13 @@ const app = express();
 
 // Loading environmental variable
 dotenv.config();
+
+// Geting PORT from environmental variable
 const port = parseInt(process.env.PORT || '3000');
 
 // Enabling cors
 app.use(cors())
+
 // Parsing request body
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -36,12 +39,5 @@ app.use(function (err, req, res, next){
 app.listen(port, function() {
     console.log(`Server is listening on port ${port}`);
 });
-
-// Handle unhandled promise rejections 
-process.on('unhandledRejection', (err, promise) => {
-    console.log(`Error: ${err.message}`);
-    // Close server & exit process
-    server.close();
-})
 
 module.exports = app;

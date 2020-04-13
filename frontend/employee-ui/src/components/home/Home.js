@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./home.css";
 import EmployeeList from "../employee/EmployeeList";
-import AddEmployee from "../employee/AddEmployee";
+import EmployeeForm from "../employee/EmployeeForm";
 import moment from "moment";
 import axios from "axios";
 
@@ -21,8 +21,8 @@ class Home extends Component {
     };
   }
 
+  // Handle onChange event of input element
   onInputChange = (event) => {
-    // event.preventDefault();
     let val = event.target.value;
     let name = event.target.name;
 
@@ -31,10 +31,13 @@ class Home extends Component {
     this.setState({ ...stateCopy });
   };
 
-  onAddClick = async (event) => {
+  // Handles onClick event of Add button
+  onAddClick = async () => {
     let quote,
       joke = "";
     let newEmployee = null;
+
+    // Http GET request to get random quotes
     let response = await axios.get("https://quotes.rest/qod");
     quote = response.data.contents.quotes[0].quote;
 
@@ -43,6 +46,8 @@ class Home extends Component {
         Accept: "application/json",
       },
     };
+
+    // Http GET request to get random jokes
     response = await axios.get("https://icanhazdadjoke.com", option);
     console.log(response);
     joke = response.data.joke;
@@ -70,16 +75,20 @@ class Home extends Component {
     this.setState({ showList: false, showAdd: false });
   };
 
+  // Handles onClick event of ListEmployee button
   onListEmployeeClick() {
     this.setState({
       showList: true,
       showAdd: false,
     });
   }
+
+  // Handles onClick event of ListEmployee button
   onAddEmployeeClick() {
     this.setState({ showList: false, showAdd: true });
   }
 
+  // Make Http request when the component upates  
   componentDidUpdate() {
     axios
       .get(axios.defaults.baseURL)
@@ -92,9 +101,10 @@ class Home extends Component {
     if (this.state.showList) {
       contentToView = <EmployeeList employeeList={this.state.employeeList} />;
     }
+
     if (this.state.showAdd) {
       contentToView = (
-        <AddEmployee
+        <EmployeeForm
           firstName={this.state.firstName}
           laststName={this.state.lastName}
           hireDate={this.state.hireDate}

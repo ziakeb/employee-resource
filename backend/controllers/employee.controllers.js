@@ -5,6 +5,7 @@ const DATABASE = {
   employees: [],
 };
 
+// Fetchs employee list
 exports.list = (req, res, next) => {
   try {
     res.status(200).json(DATABASE.employees);
@@ -14,6 +15,7 @@ exports.list = (req, res, next) => {
   }
 };
 
+// Fetch an employee by Id
 exports.getById = (req, res, next) => {
   try {
     let empId = req.params.id;
@@ -25,6 +27,7 @@ exports.getById = (req, res, next) => {
   }
 };
 
+// Add an employee
 exports.add = (req, res, next) => {
   try {
     const date = moment().format("YYYY-MM-DD");
@@ -53,6 +56,7 @@ exports.add = (req, res, next) => {
   }
 };
 
+// Updates an employee by id
 exports.update = (req, res, next) => {
   try {
     let empId = req.params.id;
@@ -78,6 +82,7 @@ exports.update = (req, res, next) => {
   }
 };
 
+// Removes and employee by Id
 exports.remove = (req, res, next) => {
   try {
     let empId = req.params.id;
