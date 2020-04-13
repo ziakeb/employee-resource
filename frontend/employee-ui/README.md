@@ -9,6 +9,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 `moment`
 
+## External API 
+[Quote API](https://quotes.rest/qod)
+
+[Joke API](https://icanhazdadjoke.com)
+
 
 
 ## Available Scripts
